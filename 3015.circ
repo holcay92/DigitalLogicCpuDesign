@@ -28,7 +28,13 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
   <lib desc="#Gates" name="1"/>
   <lib desc="#Plexers" name="2"/>
   <lib desc="#Arithmetic" name="3"/>
-  <lib desc="#Memory" name="4"/>
+  <lib desc="#Memory" name="4">
+    <tool name="ROM">
+      <a name="contents">addr/data: 8 8
+0
+</a>
+    </tool>
+  </lib>
   <lib desc="#I/O" name="5"/>
   <lib desc="#Base" name="6">
     <tool name="Text Tool">
@@ -1326,6 +1332,26 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <a name="clabel" val=""/>
     <a name="clabelup" val="east"/>
     <a name="clabelfont" val="SansSerif plain 12"/>
+    <wire from="(480,210)" to="(480,550)"/>
+    <wire from="(480,550)" to="(720,550)"/>
+    <wire from="(230,210)" to="(290,210)"/>
+    <wire from="(430,210)" to="(480,210)"/>
+    <wire from="(480,210)" to="(530,210)"/>
+    <comp lib="0" loc="(530,210)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="width" val="18"/>
+      <a name="label" val="Instruction"/>
+      <a name="labelloc" val="east"/>
+    </comp>
+    <comp lib="4" loc="(430,210)" name="ROM">
+      <a name="addrWidth" val="18"/>
+      <a name="dataWidth" val="18"/>
+      <a name="contents">addr/data: 18 18
+0 1c403 4840 10800 c000 2c842 28009 21881
+1dc47 2e5f1 11c01
+</a>
+    </comp>
   </circuit>
   <circuit name="Program Counter">
     <a name="circuit" val="Program Counter"/>
@@ -2289,6 +2315,62 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
       <a name="width" val="3"/>
       <a name="tristate" val="false"/>
       <a name="label" val="İnput"/>
+    </comp>
+  </circuit>
+  <circuit name="Data Memory">
+    <a name="circuit" val="Data Memory"/>
+    <a name="clabel" val=""/>
+    <a name="clabelup" val="east"/>
+    <a name="clabelfont" val="SansSerif plain 12"/>
+    <wire from="(420,200)" to="(420,270)"/>
+    <wire from="(480,200)" to="(480,300)"/>
+    <wire from="(390,270)" to="(420,270)"/>
+    <wire from="(500,200)" to="(500,330)"/>
+    <wire from="(460,600)" to="(650,600)"/>
+    <wire from="(360,180)" to="(390,180)"/>
+    <wire from="(340,190)" to="(360,190)"/>
+    <wire from="(340,160)" to="(390,160)"/>
+    <wire from="(650,180)" to="(650,600)"/>
+    <wire from="(360,180)" to="(360,190)"/>
+    <wire from="(400,300)" to="(480,300)"/>
+    <wire from="(460,200)" to="(460,600)"/>
+    <wire from="(530,160)" to="(640,160)"/>
+    <wire from="(400,330)" to="(500,330)"/>
+    <wire from="(670,160)" to="(750,160)"/>
+    <wire from="(260,600)" to="(460,600)"/>
+    <comp lib="0" loc="(750,160)" name="Tunnel">
+      <a name="width" val="20"/>
+      <a name="label" val="DataMem_Result"/>
+    </comp>
+    <comp lib="0" loc="(400,330)" name="Pin">
+      <a name="tristate" val="false"/>
+      <a name="label" val="DataMem_Clear"/>
+    </comp>
+    <comp lib="4" loc="(530,160)" name="RAM">
+      <a name="addrWidth" val="10"/>
+      <a name="dataWidth" val="20"/>
+      <a name="bus" val="separate"/>
+    </comp>
+    <comp lib="0" loc="(340,160)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="width" val="20"/>
+      <a name="label" val="ADDR"/>
+    </comp>
+    <comp lib="0" loc="(390,270)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="DatMem_Write"/>
+    </comp>
+    <comp lib="0" loc="(400,300)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="DataMem_Read"/>
+    </comp>
+    <comp lib="4" loc="(670,160)" name="Register">
+      <a name="width" val="20"/>
+    </comp>
+    <comp lib="0" loc="(340,190)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="width" val="20"/>
+      <a name="label" val="SRC1"/>
     </comp>
   </circuit>
 </project>
